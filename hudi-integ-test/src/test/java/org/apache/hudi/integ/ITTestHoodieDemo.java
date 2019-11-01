@@ -117,6 +117,11 @@ public class ITTestHoodieDemo extends ITTestBase {
     cmds = Collections.singletonList("mkdir -p " + HDFS_DATA_DIR);
     executeCommandStringsInDocker(PRESTO_COORDINATOR, cmds);
 
+    // print out workspace
+    LOG.info("NISHITH...");
+    List<String> cmd1 = CollectionUtils.createImmutableList("ls /var/hoodie/ws/docker/hoodie/hadoop/hive_base/target/");
+    executeCommandStringsInDocker(ADHOC_1_CONTAINER, cmd1);
+
     // copy presto sql files to presto coordinator
     executePrestoCopyCommand(System.getProperty("user.dir") + "/.." + PRESTO_INPUT_TABLE_CHECK_RELATIVE_PATH, HDFS_DATA_DIR);
     executePrestoCopyCommand(System.getProperty("user.dir") + "/.." + PRESTO_INPUT_BATCH1_RELATIVE_PATH, HDFS_DATA_DIR);
